@@ -23,6 +23,7 @@ export default class Calculator extends Component {
         this.clearMemory = this.clearMemory.bind(this)
         this.setOperation = this.setOperation.bind(this)
         this.addDigit = this.addDigit.bind(this)
+        this.changeSignal = this.changeSignal.bind(this)
     }
 
     clearMemory() {
@@ -55,6 +56,7 @@ export default class Calculator extends Component {
                 values
             })
         }
+        
     }
 
     addDigit(n) {
@@ -78,11 +80,23 @@ export default class Calculator extends Component {
         
     }
 
+    changeSignal(){ 
+        const displayValue = -this.state.displayValue    
+        const i = this.state.current
+        const newValue = parseFloat(this.state.displayValue)
+        const values = [...this.state.values]
+        values[i] = -newValue
+        this.setState({ values, displayValue})
+    }
+        
+
+
     render() {
         return (
             <div className="calculator">               
                 <Display value={this.state.displayValue} />                
-                <Button label="AC" click={this.clearMemory} triple />
+                <Button label="AC" click={this.clearMemory} double />
+                <Button label="+/-" click={this.changeSignal}  />
                 <Button label="/" click={this.setOperation} operation />
                 <Button label="7" click={this.addDigit} />
                 <Button label="8" click={this.addDigit} />
