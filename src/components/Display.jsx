@@ -2,10 +2,12 @@ import React from "react";
 import './Display.css'
 
 export default props =>
-        <div className="display">               
-                <label className="bola1"></label>
-                <label className="bola2"></label>
-                <label className="bola3"></label>
+        <div className="display">
+                <div className="bola">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                </div>
                 <label className="valor">{props.value}</label>
         </div>
 
